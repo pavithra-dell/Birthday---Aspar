@@ -15,12 +15,24 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
     .slide {
       display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
     .slide.active {
-      display: block;
+      display: flex;
+    }
+    h1, h2 {
+      color: #333;
     }
     button {
       padding: 10px 20px;
@@ -69,6 +81,7 @@
     function nextSlide() {
       document.getElementById(`slide${currentSlide}`).classList.remove('active');
       currentSlide++;
+      if (currentSlide > 5) currentSlide = 5; // Prevent going beyond the last slide
       document.getElementById(`slide${currentSlide}`).classList.add('active');
     }
 
