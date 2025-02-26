@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Aspar</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Aspar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .slide {
+      display: none;
+    }
+    .slide.active {
+      display: block;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      background-color: #ff6f61;
+      color: white;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #ff3b2f;
+    }
+  </style>
 </head>
 <body>
-    <div id="container">
-        <div id="page1">
-            <h1>Happy Birthday Aspar</h1>
-            <button onclick="nextPage(2)">Next</button>
-        </div>
+  <div class="slide active" id="slide1">
+    <h1>Happy Birthday Aspar!</h1>
+    <button onclick="nextSlide()">Next</button>
+  </div>
 
-        <div id="page2" class="hidden">
-            <h2>Do you love me?</h2>
-            <button onclick="nextPage(3)">Yes</button>
-            <button onclick="nextPage(4)">No</button>
-        </div>
+  <div class="slide" id="slide2">
+    <h2>Do you love me?</h2>
+    <button onclick="showLoveMessage()">Yes</button>
+    <button onclick="nextSlide()">No</button>
+  </div>
 
-        <div id="page3" class="hidden">
-            <h2>Awww, I love you too Aspar ❤️</h2>
-        </div>
+  <div class="slide" id="slide3">
+    <h2>Awww I love you too Aspar ❤️</h2>
+  </div>
 
-        <div id="page4" class="hidden">
-            <h2>Think more...</h2>
-            <button onclick="nextPage(5)">Yes</button>
-            <button onclick="nextPage(6)">No</button>
-        </div>
+  <div class="slide" id="slide4">
+    <h2>Think more... Yes or No?</h2>
+    <button onclick="showLoveMessage()">Yes</button>
+    <button onclick="nextSlide()">No</button>
+  </div>
 
-        <div id="page5" class="hidden">
-            <h2>Yay! You changed your mind ❤️</h2>
-        </div>
+  <div class="slide" id="slide5">
+    <h2>Okay, I'll wait until you say Yes 😊</h2>
+  </div>
 
-        <div id="page6" class="hidden">
-            <h2>Uh oh...</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/8gVU1hvL5uI?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-    </div>
+  <script>
+    let currentSlide = 1;
 
-    <script src="script.js"></script>
+    function nextSlide() {
+      document.getElementById(`slide${currentSlide}`).classList.remove('active');
+      currentSlide++;
+      document.getElementById(`slide${currentSlide}`).classList.add('active');
+    }
+
+    function showLoveMessage() {
+      document.getElementById(`slide${currentSlide}`).classList.remove('active');
+      currentSlide = 3; // Go to the "Awww I love you too" slide
+      document.getElementById(`slide${currentSlide}`).classList.add('active');
+    }
+  </script>
 </body>
 </html>
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #ffe6f2;
-    margin: 0;
-    padding: 0;
-}
-
-#container {
-    margin-top: 100px;
-}
-
-h1, h2 {
-    color: #ff1493;
-}
-
-button {
-    background-color: #ff1493;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #ff69b4;
-}
-
-.hidden {
-    display: none;
-}
-function nextPage(pageNumber) {
-    document.querySelectorAll('div').forEach(div => div.classList.add('hidden'));
-    document.getElementById(`page${pageNumber}`).classList.remove('hidden');
-}
