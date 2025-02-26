@@ -42,3 +42,41 @@
     <script src="script.js"></script>
 </body>
 </html>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffe6f2;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    margin-top: 100px;
+}
+
+h1, h2 {
+    color: #ff1493;
+}
+
+button {
+    background-color: #ff1493;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ff69b4;
+}
+
+.hidden {
+    display: none;
+}
+function nextPage(pageNumber) {
+    document.querySelectorAll('div').forEach(div => div.classList.add('hidden'));
+    document.getElementById(`page${pageNumber}`).classList.remove('hidden');
+}
